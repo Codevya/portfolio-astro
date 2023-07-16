@@ -11,6 +11,7 @@ import Hero from "../components/Hero.astro";
 import Icon from "../components/Icon.astro";
 import Pill from "../components/Pill.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
+import ContactForm from "../components/ContactForm.astro";
 
 // Page section components
 import ContactCTA from "../components/ContactCTA.astro";
@@ -45,12 +46,9 @@ const projects = (await getCollection("work"))
           </div>
         </Hero>
 
-        <img
-          alt="Yoan Abadine Portrait"
-          width="480"
-          height="620"
-          src="/assets/portrait.png"
-        />
+        <div class="img-container">
+          <img alt="Yoan Abadine Portrait" src="/assets/portrait.png" />
+        </div>
       </header>
 
       <Skills />
@@ -86,7 +84,6 @@ const projects = (await getCollection("work"))
         </div>
       </section>
     </main>
-
     <ContactCTA />
   </div>
 </BaseLayout>
@@ -103,14 +100,23 @@ const projects = (await getCollection("work"))
     display: none;
   }
 
-  .hero img {
-    aspect-ratio: 5 / 4;
+  .img-container {
+    width: 100%;
+    max-width: 480px;
+    padding-top: 100%;
+    position: relative;
+  }
+
+  .img-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    object-position: top;
     border-radius: 1.5rem;
     box-shadow: var(--shadow-md);
   }
-
   @media (min-width: 50em) {
     .hero {
       display: grid;
@@ -123,12 +129,6 @@ const projects = (await getCollection("work"))
       margin-top: 0.5rem;
       display: flex;
       gap: 0.5rem;
-    }
-
-    .hero img {
-      aspect-ratio: 3 / 4;
-      border-radius: 4.5rem;
-      object-fit: cover;
     }
   }
 

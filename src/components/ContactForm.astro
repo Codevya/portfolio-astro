@@ -1,0 +1,95 @@
+---
+// ContactForm.astro
+---
+
+<form class="contact-form" action="/submit_form" method="post">
+  <div>
+    <label for="fname">First Name</label><br />
+    <input type="text" id="fname" name="fname" required />
+  </div>
+
+  <div>
+    <label for="email">Email</label><br />
+    <input type="email" id="email" name="email" required />
+  </div>
+
+  <div>
+    <label for="message">Message</label><br />
+    <textarea id="message" name="message" style="height:100px" required
+    ></textarea>
+  </div>
+
+  <div>
+    <input type="submit" value="Submit" />
+  </div>
+</form>
+
+<!-- add style -->
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    border-radius: 10px;
+    background-color: var(--gray-900);
+    width: 100%;
+    box-shadow: var(--shadow-md);
+  }
+
+  .contact-form div {
+    width: 100%;
+  }
+
+  .contact-form label {
+    align-self: flex-start;
+    font-size: var(--text-md);
+    color: var(--gray-100);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form textarea {
+    width: 100%;
+    padding: 1em;
+    border: none;
+    border-radius: 5px;
+    box-shadow: var(--shadow-sm);
+    font-size: var(--text-base);
+    margin-bottom: 1em;
+    color: var(--gray-100);
+    background-color: var(--gray-999);
+    width: 100%;
+  }
+
+  .contact-form input[type="text"]:focus,
+  .contact-form input[type="email"]:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    box-shadow: var(--shadow-md);
+  }
+
+  .contact-form input[type="submit"] {
+    width: 100%;
+    cursor: pointer;
+    background-color: var(--accent-regular);
+    color: var(--accent-text-over);
+    border: none;
+    border-radius: 5px;
+    padding: 1em 2em;
+    font-size: var(--text-md);
+    transition: var(--theme-transition);
+  }
+
+  .contact-form input[type="submit"]:hover {
+    box-shadow: var(--shadow-md);
+    background-color: var(--accent-dark);
+  }
+
+  .contact-form input[type="submit"]:active {
+    background-color: var(--accent-dark);
+    box-shadow: none;
+  }
+</style>
