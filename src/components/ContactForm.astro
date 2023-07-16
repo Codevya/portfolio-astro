@@ -1,11 +1,8 @@
----
-// ContactForm.astro
----
-
+<!-- ContactForm.astro -->
 <form class="contact-form" name="astro-form" data-netlify="true" method="post">
   <div>
     <label for="fname">Name</label><br />
-    <input type="text" id="fname" name="fname" required />
+    <input type="text" id="fname" name="fname" required minlength="2" />
   </div>
 
   <div>
@@ -15,8 +12,12 @@
 
   <div>
     <label for="message">Message</label><br />
-    <textarea id="message" name="message" style="height:100px" required
-    ></textarea>
+    <textarea
+      id="message"
+      name="message"
+      style="height:100px"
+      required
+      minlength="10"></textarea>
   </div>
 
   <div>

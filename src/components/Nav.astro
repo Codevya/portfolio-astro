@@ -15,18 +15,21 @@ const iconLinks: {
   label: string;
   href: string;
   icon: keyof typeof iconPaths;
+  target?: string;
 }[] = [
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/me",
+    href: "https://www.linkedin.com/in/yabadine/",
     icon: "linkedin-logo",
+    target: "_blank",
   },
-  { label: "GitHub", href: "https://github.com/me", icon: "github-logo" },
-  { label: "Twitter", href: "https://twitter.com/me", icon: "twitter-logo" },
+  // { label: "GitHub", href: "https://github.com/me", icon: "github-logo" },
+  // { label: "Twitter", href: "https://twitter.com/me", icon: "twitter-logo" },
+  { label: "Contact Me", href: "#contactSection", icon: "paper-plane-tilt" },
 ];
 ---
 
-<nav>
+<nav class="navbar">
   <div class="menu-header">
     <a href="/" class="site-title">
       <Icon
@@ -50,30 +53,32 @@ const iconLinks: {
     <ul class="nav-items">
       {
         textLinks.map(({ label, href }) => (
-          <li>
-            <a
-              aria-current={Astro.url.pathname === href}
-              class:list={[
-                "link",
-                {
-                  active:
-                    Astro.url.pathname === href ||
-                    (href !== "/" && Astro.url.pathname.startsWith(href)),
-                },
-              ]}
-              href={href}
-            >
-              {label}
-            </a>
-          </li>
+          <>
+            <li>
+              <a
+                aria-current={Astro.url.pathname === href}
+                class:list={[
+                  "link",
+                  {
+                    active:
+                      Astro.url.pathname === href ||
+                      (href !== "/" && Astro.url.pathname.startsWith(href)),
+                  },
+                ]}
+                href={href}
+              >
+                {label}
+              </a>
+            </li>
+          </>
         ))
       }
     </ul>
     <div class="menu-footer">
       <div class="socials">
         {
-          iconLinks.map(({ href, icon, label }) => (
-            <a href={href} class="social">
+          iconLinks.map(({ href, icon, label, target }) => (
+            <a href={href} class="social" target={target}>
               <span class="sr-only">{label}</span>
               <Icon icon={icon} />
             </a>
@@ -129,7 +134,14 @@ const iconLinks: {
     position: relative;
     font-family: var(--font-brand);
     font-weight: 500;
-    margin-bottom: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .navbar {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.025); /* semi-transparent white */
+    backdrop-filter: blur(10px); /* blur effect */
   }
 
   .menu-header {
